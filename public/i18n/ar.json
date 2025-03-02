@@ -1,0 +1,25 @@
+{
+    "navbar": {
+        "home": "الرئيسية",
+        "products": "المنتجات",
+        "brands": "العلامات التجارية",
+        "categories": "الفئات",
+        "logIn": "تسجيل الدخول",
+        "register": "إنشاء حساب",
+        "logout": "تسجيل الخروج",
+        "lang": "اللغة"
+    },
+    "login": {
+        "loginNow": "تسجيل الدخول الآن",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "signIn": "تسجيل الدخول"
+    },
+    "home": {
+        "featuredCategories": "الفئات المميزة",
+        "featuredProducts": "المنتجات المميزة",
+        "searchPlaceholder": "ابحث عن المنتجات...",
+        "addToCart": "أضف إلى السلة",
+        "price": "السعر"
+    }
+}

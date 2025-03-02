@@ -1,0 +1,25 @@
+<section class="my-10">
+
+
+    <div class="grid md:grid-cols-4 gap-11">
+
+        @for (brand of brands; track brand._id) {
+
+        <div class=" shadow-lg shadow-gray-400  hover:shadow-green-600 cursor-pointer transition-all hover:scale-95"
+            [routerLink]="['/shopByBrand', brand._id , brand.name]">
+
+            <div class="mx-auto w-[70%]">
+                <img [src]="brand.image" alt="">
+            </div>
+            <h2 class="text-center font-bold text-lg my-3">
+                {{brand.name}}
+            </h2>
+        </div>
+
+        }
+
+    </div>
+
+
+
+</section>

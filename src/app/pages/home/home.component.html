@@ -1,0 +1,122 @@
+<section class="my-9">
+
+    <div class="grid grid-cols-[70%_30%] gap-10">
+        <div >
+
+            <owl-carousel-o [options]="customMainSlider">
+                <ng-template carouselSlide> 
+                    <img src="/images/img1.avif" alt="" class=" h-[300px] w-full p-2 rounded-2xl hover:scale-90 transition-all">
+                </ng-template>
+                <ng-template carouselSlide> 
+                    <img src="/images/img2.avif" alt="" class=" h-[300px] w-full p-2 rounded-2xl hover:scale-90 transition-all">
+                </ng-template>
+                <ng-template carouselSlide> 
+                    <img src="/images/img3.avif" alt="" class=" h-[300px] w-full p-2 rounded-2xl hover:scale-90 transition-all">
+                </ng-template>
+                <ng-template carouselSlide> 
+                    <img src="/images/img4.avif" alt="" class=" h-[300px] w-full p-2 rounded-2xl hover:scale-90 transition-all">
+                </ng-template>
+                <ng-template carouselSlide> 
+                    <img src="/images/img5.avif" alt="" class=" h-[300px] w-full p-2 rounded-2xl hover:scale-90 transition-all">
+                </ng-template>
+              </owl-carousel-o>
+
+        </div>
+        <div >
+
+            <img src="/images/grocery-banner.png" class="h-[150px] w-full p-2 rounded-full hover:scale-90 transition-all">
+            <img src="/images/grocery-banner-2.jpeg" class="h-[150px] w-full p-2 rounded-full hover:scale-90 transition-all" alt="">
+        </div>
+    </div>
+
+
+
+</section>
+
+
+<section class="mb-12">
+    <h2 class="text-4xl text-center text-green-900 font-bold mb-5 Colored">
+        <i class="me-3 fa-solid fa-fire-flame-curved text-orange-600"></i>
+        {{ 'home.featuredCategories' | translate }}
+        <i class="ms-3 fa-solid fa-fire-flame-curved text-orange-600"></i>
+    </h2>
+
+    <owl-carousel-o [options]="customOptions">
+        @for (cat of categories; track cat._id) {
+          
+
+                <ng-template carouselSlide >
+                    
+                        <div class=" p-12  " [routerLink]="['/subcategories', cat._id, cat.name]">
+                            <img [src]="cat.image" [alt]="cat.name" class="w-full border-2 shadow-gray-400 shadow-lg h-[150px] rounded-full cursor-pointer my-2" >
+                            <h3 class="text-green-600 text-center">{{cat.name}}</h3>
+                        </div>
+    
+                </ng-template>
+          
+            
+
+
+        }
+    
+  
+    
+      </owl-carousel-o>
+
+
+</section>
+
+
+
+<section class="mt-14">
+    <h2 class="text-4xl text-center text-green-900 font-bold mb-5 Colored">
+        <i class="me-3 fa-solid fa-fire-flame-curved text-orange-600"></i>
+        {{ 'home.featuredProducts' | translate }}
+        <i class="ms-3 fa-solid fa-fire-flame-curved text-orange-600"></i>
+    </h2>
+
+    <input [(ngModel)]="searchInput" type="search" id="default-search" 
+        class="block mx-auto mb-8 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[40%]" 
+        [placeholder]="'home.searchPlaceholder' | translate" 
+        required />
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for(prod of products.slice(0,12) | search: searchInput ; track prod.id ; let i = $index ){
+            <div class="transition-all hover:shadow-lg hover:shadow-gray-400 w-full flex flex-col justify-between py-1 max-w-xs bg-white border border-green-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 ParentProducts overflow-hidden mx-auto">
+                <img class=" rounded-t-lg w-full h-[250px] object-contain " [src]="prod.imageCover" [alt]="prod.title" />
+                <div class="px-4 py-1 flex flex-col justify-between">
+                    <div [routerLink]="['/details', prod._id]" >
+
+                        <div>
+                            <h6 class="text-sm font-semibold tracking-tight text-green-600 dark:text-white">
+                                {{prod.category.name}}</h6>
+                            <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white cursor-pointer">{{prod.title}}</h5>
+                        </div>
+        
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-bold text-gray-900 dark:text-white">
+                                ${{prod.price}}
+                            </span>
+                            <span class="">
+                                <i class="fas fa-star text-yellow-400">{{prod.ratingsAverage}}</i>
+        
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <button class="text-start -translate-y-[-250%] mt-5 btn text-xs px-7 py-2 rounded-xl bg-green-400 text-black hover:bg-green-900 hover:text-white" 
+                            (click)="addToCart(prod._id)">
+                            {{ 'home.addToCart' | translate }}
+                            <i class="fa-solid fa-cart-shopping ms-2"></i>
+                        </button>
+                        <button (click)="addTowishlist(prod._id, i )">
+                            <i class="fa-solid fa-heart fa-xl " [class]="prod.isInWishlist"></i>
+                            
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

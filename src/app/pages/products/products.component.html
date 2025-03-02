@@ -1,0 +1,57 @@
+<section class="my-10">
+    <h1 class="text-green-900 font-bold text-center text-4xl my-10">
+        Products
+    </h1>
+
+    <input [(ngModel)]="searchInput"  type="search" id="default-search" class="block mx-auto mb-8 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[40%]" placeholder="Search Mockups, Logos..." required />
+         
+
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+
+        @for(prod of products| search: searchInput ; track prod.id; let i=$index){
+            
+
+        <div
+           class="transition-all hover:shadow-lg hover:shadow-gray-400 w-full flex flex-col justify-between py-1 max-w-xs bg-white border border-green-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 ParentProducts overflow-hidden mx-auto ">
+
+            <img class=" rounded-t-lg w-full h-[250px] object-contain " [src]="prod.imageCover" [alt]="prod.title" />
+            <div class="px-4 py-1 flex flex-col justify-between">
+                <div [routerLink]="['/details', prod._id]" >
+
+                    <div>
+                        <h6 class="text-sm font-semibold tracking-tight text-green-600 dark:text-white">
+                            {{prod.category.name}}</h6>
+                        <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white cursor-pointer">{{prod.title.substring(0,30)}}</h5>
+                    </div>
+    
+                    <div class="flex items-center justify-between">
+                        <span class="text-3xl font-bold text-gray-900 dark:text-white">${{prod.price}}</span>
+                        <span class="">
+                            <i class="fas fa-star text-yellow-400">{{prod.ratingsAverage}}</i>
+    
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center">
+
+                    <button class=" text-start -translate-y-[-250%]  hover:translate-x-[0%] transition-all  mt-5 btn text-xs px-7 py-2 rounded-xl bg-green-400 text-black hover:bg-green-900 hover:text-white " (click)="addToCart(prod._id)" > Add To Cart <i class="fa-solid fa-cart-shopping ms-2"></i></button>
+                    <button (click)="addTowishlist(prod._id, i )">
+                        <i class="fa-solid fa-heart fa-xl " [class]="prod.isInWishlist"></i>
+                        
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+
+
+
+
+
+
+    </div>
+
+
+</section>

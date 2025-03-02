@@ -1,0 +1,102 @@
+<section class="border shadow bg-slate-100 p-10 w-1/2 mx-auto my-10">
+ 
+    <h2 class="text-center text-green-600 text-3xl font-bold">Checkout</h2>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="submitform()" >
+
+        <div class="mb-5"> 
+
+
+            <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Details:</label>
+            
+            <textarea formControlName="details" id="details" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+        
+            @if (checkoutForm.get('details')?.errors && checkoutForm.get("details")?.touched) {
+
+                <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                    role="alert">
+                    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Danger</span>
+                    <div>
+                        <span class="font-medium">Ensure that these requirements are met:</span>
+                        <ul class="mt-1.5 list-disc list-inside">
+                            @if (checkoutForm.get('details')?.getError('required')) {
+
+                            <li>Details are required</li>
+                            }
+                            
+                        </ul>
+                    </div>
+                </div>
+                }
+        </div>
+            <div class="mb-5">
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone:</label>
+            <input formControlName="phone" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+       
+            @if (checkoutForm.get('phone')?.errors && checkoutForm.get("phone")?.touched) {
+
+                <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                    role="alert">
+                    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Danger</span>
+                    <div>
+                        <span class="font-medium">Ensure that these requirements are met:</span>
+                        <ul class="mt-1.5 list-disc list-inside">
+                            @if (checkoutForm.get('phone')?.getError('required')) {
+
+                            <li>Phone number is required</li>
+                            }
+                            @else {
+                                <li>only Egyptian numbers are allowed</li>
+                            }
+                            
+                        </ul>
+                    </div>
+                </div>
+                }
+        </div>
+        <div class="mb-5">
+            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City:</label>
+            <input type="text" id="city" formControlName="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+       
+            @if (checkoutForm.get('city')?.errors && checkoutForm.get("city")?.touched) {
+
+                <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                    role="alert">
+                    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Danger</span>
+                    <div>
+                        <span class="font-medium">Ensure that these requirements are met:</span>
+                        <ul class="mt-1.5 list-disc list-inside">
+                            @if (checkoutForm.get('city')?.getError('required')) {
+
+                            <li>city is required</li>
+                            }
+                            
+                        </ul>
+                    </div>
+                </div>
+                }
+        </div>
+
+        <button class="bg-slate-500 p-3 rounded-3xl text-white hover:bg-slate-700 mt-2 block mx-auto" >Check Out</button>
+
+
+    </form>
+
+
+
+</section>

@@ -1,0 +1,26 @@
+<section class="my-12">
+
+    <h1 class="text-center font-bold text-green-700 text-3xl mb-9"> {{name}} subcategories</h1>
+
+    <div class="grid md:grid-cols-3 gap-4 sm:grid-cols-2">
+        
+        @for (sub of subcategories; track sub._id) {
+            @if(sub.category===id){
+
+
+                <a data-tooltip-target="tooltip-no-arrow" 
+                    class="text-black  shadow-gray-500 shadow-lg bg-slate-300 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-4 hover:text-white text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    {{sub.name}}</a>
+        
+                <div id="tooltip-no-arrow" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                    {{sub.name}}
+                </div>
+            }
+        }
+
+    </div>
+
+
+
+</section>

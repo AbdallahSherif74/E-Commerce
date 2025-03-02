@@ -1,0 +1,25 @@
+{
+    "navbar":{
+        "home":"Home",
+        "products":"Products",
+        "brands": "Brands",
+        "categories":"Categories",
+        "logIn":"Log In",
+        "register":"Register",
+        "logout":"Log out",
+        "lang":"Lang"
+    },
+    "login": {
+        "loginHere": "Login Here",
+        "email" : "Email",
+        "password":"Password",
+        "signIn":"SignIn"
+    },
+    "home": {
+        "featuredCategories": "Featured Categories",
+        "featuredProducts": "Featured Products",
+        "searchPlaceholder": "Search Mockups, Logos...",
+        "addToCart": "Add To Cart",
+        "price": "Price"
+    }
+}

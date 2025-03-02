@@ -1,0 +1,140 @@
+<nav class="bg-gray-200 border-gray-200 dark:bg-gray-900 fixed w-full z-[99] ">
+  <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-2">
+    <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="/images/freshcart-logo.svg" class="h-8" alt="Flowbite Logo" />
+     
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      </svg>
+  </button>
+    <div class="hidden w-full md:flex md:w-auto flex-grow " id="navbar-default">
+
+      @if(isLogin()){
+      <ul class="capitalize font-medium ms-5 flex flex-col justify-center items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a routerLink="/home" routerLinkActive="bg-green-600 text-white rounded-full" class="block py-2 px-3  rounded-sm   md:p-1  " aria-current="page">{{"navbar.home"| translate}}</a>
+        </li>
+        <li>
+          <a routerLink="/products" routerLinkActive="bg-green-600 text-white" class="block py-2 px-3  rounded-sm   md:p-1  " aria-current="page">{{"navbar.products" | translate}}</a>
+        </li>
+        
+        <li>
+          <a routerLink="/categories" routerLinkActive="bg-green-600 text-white" class="block py-2 px-3  rounded-sm   md:p-1  " aria-current="page">{{"navbar.categories" | translate}}</a>
+        </li>
+        <li>
+          <a routerLink="/brands" routerLinkActive="bg-green-600 text-white" class="block py-2 px-3  rounded-sm   md:p-1  " aria-current="page">{{"navbar.brands" | translate}}</a>
+        </li>
+        
+       
+      </ul>
+    }
+    <ul class="capitalize font-medium ms-auto flex flex-col justify-center items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-3 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      
+      <li>
+
+        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-green-600  focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-1 py-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 me-3 dark:focus:ring-blue-800" type="button"><i class="fa-solid text-xl fa-globe"></i> <span class="ms-2 uppercase italic text-lg"> {{currentLang}} </span><svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+          </button>
+          
+          <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+
+                @if (currentLang==="en") {
+                  <li>
+                    <a (click)="change('ar')"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer dark:hover:text-white">AR</a>
+                  </li>
+
+                  
+                }
+                @else{
+
+                  <li>
+                    <a  (click)="change('en')"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer dark:hover:text-white">EN</a>
+                  </li>
+                }
+               
+              </ul>
+            </div>
+      </li>
+      <li>
+        <a  class="block py-2 px-1  rounded-sm md:bg-transparent  md:p-0 text-blue-800 " aria-current="page"><i class="fab fa-facebook"></i></a>
+      </li>
+      <li>
+        <a  class="block py-2 px-1  rounded-sm md:bg-transparent  md:p-0 " aria-current="page"><i class="fab fa-tiktok"></i></a>
+      </li>
+      <li>
+        <a  class="block py-2 px-1  rounded-sm md:bg-transparent  md:p-0 text-blue-400 " aria-current="page"><i class="fab fa-twitter"></i></a>
+      </li>
+      <li>
+        <a  class="block py-2 px-1  rounded-sm md:bg-transparent  md:p-0  text-purple-700" aria-current="page"><i class="fab fa-twitch"></i></a>
+      </li>
+     
+  
+      @if(!isLogin()){
+      <li>
+          <a routerLink="/login" routerLinkActive="bg-green-300 text-purple-900" class="block py-2 px-3  rounded-sm   md:p-1 md:ms-3 " aria-current="page">{{"navbar.logIn" | translate}}</a>
+        </li>
+        <li>
+          <a routerLink="/register" routerLinkActive="bg-green-300 text-purple-900" class="block py-2 px-3  rounded-sm   md:p-1 " aria-current="page">{{"navbar.register" | translate}}</a>
+        </li>
+      }
+      @else{
+
+        <li>
+          
+          <a routerLink="/cart" routerLinkActive=" text-green-600 text-2xl " class="block py-2 px-3  rounded-sm   md:p-1 md:ms-2 relative" aria-current="page"><i class="fa-solid fa-cart-shopping fa-xl"></i><span class="badge text-black px-1 bg-yellow-200 absolute rounded-md mt-1 left-[-10px] top-[-10px]" >{{numberCount()}}</span></a>
+          
+        </li>
+        <li>
+          <i routerLink="/wishlist" class="fa-solid fa-heart cursor-pointer" routerLinkActive="text-red-500 text-4xl"></i>
+        </li>
+        <li>
+          <a role="button" class="block py-2 px-3 ms-5 rounded-lg  md:p-1 bg-red-600 text-white" aria-current="page" (click)="logOutAlert(el)">{{"navbar.logout" | translate}} <i class="fa-solid fa-right-from-bracket m-2"></i></a>
+
+        </li>
+
+      } 
+        
+       
+      </ul>
+    
+    </div>
+  </div>
+</nav>
+
+
+ <div #el class="hidden">
+
+   <div class="fixed inset-0 z-[9998] bg-black bg-opacity-50 flex items-center justify-center ">
+     <div class="container w-[50%] mx-auto relative z-[9999]">
+       <div id="alert-additional-content-2" class="p-4 mb-4 text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
+         <div class="flex justify-center items-center">
+           <svg class="shrink-0 w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+           </svg>
+           <span class="sr-only">Info</span>
+           <h3 class="text-lg font-medium text-center" >Logout</h3>
+         </div>
+         <div class="mt-2 mb-4 text-sm text-center">
+           Are you sure you want to logout?
+         </div>
+         <div class="flex items-center justify-center">
+           <button (click)="dismiss(el)" type="button" class="text-red-800 bg-transparent border border-red-800 hover:bg-red-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-red-600 dark:border-red-600 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800" data-dismiss-target="#alert-additional-content-2" aria-label="Close">
+             Dismiss
+           </button>
+           <button type="button" (click)="authService.logOut()" class="text-white bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 ms-2 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+         
+            Log Out
+           </button>
+
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>

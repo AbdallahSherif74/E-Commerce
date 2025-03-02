@@ -1,0 +1,45 @@
+<section class="my-10">
+    <h1 class="text-green-900 font-bold text-center text-4xl my-10">
+        Categories
+    </h1>
+
+    
+         
+
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10  ">
+
+        @for(cat of categories; track cat._id){
+            
+            
+        <div [routerLink]="['/subcategories', cat._id, cat.name]"
+           class="w-full flex flex-col justify-between  max-w-xs bg-white border border-green-200 hover:border-green-600 hover:shadow-xl hover:shadow-green-700 transition-all  rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 ParentProducts overflow-hidden mx-auto ">
+
+            <img class=" w-full h-[250px] object-cover  " [src]="cat.image" [alt]="cat.name" />
+            <div class="px-4 py-1 flex flex-col justify-between">
+               
+
+                    <div>
+                        <h6 class="text-sm font-semibold tracking-tight text-green-600 dark:text-white">
+                            
+                           </h6>
+                        <h5 class="text-lg font-semibold tracking-tight text-green-900 dark:text-white  text-center">{{cat.name}}</h5>
+                    </div>
+    
+                   
+               
+                
+                
+            </div>
+        </div>
+        }
+
+
+
+
+
+
+    </div>
+
+
+</section>
